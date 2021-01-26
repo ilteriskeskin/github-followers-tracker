@@ -44,12 +44,10 @@ def github_followers():
                     following.append(follow["html_url"])
 
             followers_diff = Diff(followers, following)
-            following_diff = Diff(following, followers)
 
-            return render_template(
-                "index.html", followers_diff=followers_diff, following_diff=following_diff
-            )
+            return render_template("index.html", followers_diff=followers_diff)
+            
         except:
-            return render_template('rate_limit.html')
+            return render_template("rate_limit.html")
     else:
         return render_template("index.html")
