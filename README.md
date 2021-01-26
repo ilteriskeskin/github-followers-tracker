@@ -6,7 +6,7 @@ görebileceğiniz basit bir uygulama hazırladım.**
 
 ### Önizleme
 
-Projeyi [https://github.ilteris.ninja/](şurdan) kanlı canlı görebilirsiniz. Yok 
+Projeyi [şurdan](https://github.ilteris.ninja/) kanlı canlı görebilirsiniz. Yok 
 görüp ne yapacağım lokalde kullanmak istiyorum dersen seni alttaki adıma alalım.
 
 ### Kurulum
