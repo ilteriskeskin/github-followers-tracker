@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 
 def Diff(li1, li2):
-    return list(list(set(li1) - set(li2)) + list(set(li2) - set(li1)))
+    return list(list(set(li1) - set(li2)))
 
 
 @app.route("/", methods=["GET"])
@@ -44,8 +44,10 @@ def github_followers():
                     following.append(follow["html_url"])
 
             followers_diff = Diff(followers, following)
+            following_diff = Diff(following, followers)
 
-            return render_template("index.html", followers_diff=followers_diff)
+
+            return render_template("index.html", followers_diff=followers_diff, following_diff=following_diff)
             
         except:
             return render_template("rate_limit.html")

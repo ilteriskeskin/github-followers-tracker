@@ -17,8 +17,8 @@
             <img src="static/img/octocat.png" alt="octocat" width="150" height="100">
             <h1 class="display-4">GitHub Karşılıksız Takip</h1>
             <p class="lead">Selam herkese. GitHub kaynaşma olayları iyice arttı ve kim takip etti, kim takip etmedi
-                gibi durumları izleyemez olduk. Bu duruma son vermek için karşılıksız takipleşmeleri görebileceğiniz 
-                basit bir uygulama hazırladım. 
+                gibi durumları izleyemez olduk. Bu duruma son vermek için karşılıksız takipleşmeleri görebileceğiniz
+                basit bir uygulama hazırladım.
             </p>
             <hr class="my-4">
             <p>Tahmin ettiğiniz gibi kendi GitHub kullanıcı adınızı aşağıdaki inputa girmeniz yeterli :)</p>
@@ -28,14 +28,45 @@
             </form>
         </div>
 
-        {% if followers_diff %}
-        {% for diff in followers_diff %}
-        <ul>
-            <li>
-                <a href="{{ diff }}">{{ diff }}</a>
-            </li>
-        </ul>
-        {% endfor %}
+        {% if followers_diff and following_diff %}
+
+        <h3>Senin Takip Ettiğin Fakat Seni Takip Etmeyen Hesaplar: </h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Hesap</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for diff in following_diff %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td><a href="{{ diff }}">{{ diff }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h3>Seni Takip Eden Fakat Senin Takip Etmediğin Hesaplar: </h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Hesap</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for diff in followers_diff %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td><a href="{{ diff }}">{{ diff }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         {% endif %}
     </div>
 
